@@ -106,12 +106,9 @@ scripts/              Playwright end-to-end scripts
 
 ## Use of AI
 
-I used two AI tools:
+I used AI tools to speed up implementation and testing. Claude (Anthropic), in Cowork mode, was the main coding assistant. I also used ChatGPT briefly to think through the assignment and structure my instructions.
 
-- **ChatGPT** helped me understand the assignment, think through the product approach, structure the instructions I gave Claude, and review the resulting application and documentation.
-- **Claude (Anthropic)**, in Cowork mode, was the coding agent. It read the assignment PDF, built the React + TypeScript application, generated the sample data, implemented the workflow logic, ran the tests, and made implementation and UI fixes.
-
-My instructions set the problems to focus on and the scope boundaries. Claude proposed the implementation details within them, and I reviewed the output and directed each following iteration. More detail, including where I changed an AI suggestion, is in `docs/AI_USAGE_NOTE.md`.
+I defined the focus and scope: a dashboard that answers "what needs attention right now?", kept simple for warehouse staff. Claude implemented the app, generated the sample data, built the workflow details and ran the tests. I reviewed each iteration, asked for changes where needed, and made the final decisions about the scope and the submission. More detail is in `docs/AI_USAGE_NOTE.md`.
 
 ## Prototype assumptions
 

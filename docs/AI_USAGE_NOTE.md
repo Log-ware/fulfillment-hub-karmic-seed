@@ -2,30 +2,27 @@
 
 ## Tools and how I used them
 
-I used two AI tools, for different jobs.
+I used AI tools to speed up implementation and testing. Claude (Anthropic), in Cowork mode, was the main coding assistant. I also used ChatGPT briefly to think through the assignment and structure my instructions.
 
-- **ChatGPT** helped me understand the assignment and think through the product approach. It also helped me structure the instructions I gave Claude, and review the resulting application and documentation.
-- **Claude (Anthropic)**, in Cowork mode, was the coding agent. It read the assignment PDF, built the React + TypeScript application, generated the sample data, and implemented the detailed workflow logic. It also ran the unit and browser tests and made the code and UI fixes that came out of each review.
+My role was to understand the fulfillment problem, define the focus and scope, review the proposed implementation, and direct the iterations. The main question I wanted the dashboard to answer was "what needs attention right now?" I also decided the app should stay simple for warehouse staff and focus on six things: order visibility, priority orders, inventory blockages, packing verification, staging/pickup, and exception tracking.
 
-My instructions to Claude set the problems to focus on and the scope. That included the question the home screen must answer ("what needs attention right now?"), plain language for a warehouse team that isn't comfortable with technology, and what to leave out (logins, a backend, real courier APIs, unnecessary charts). Claude proposed the implementation details within that scope. I reviewed the output after each round and directed the next one, including asking it to stop adding features once the core workflow worked.
+Claude implemented the React + TypeScript application, generated the sample data, built the workflow details, and ran the unit and browser tests. I reviewed the app after each iteration and asked for changes where needed.
 
 ## Where I changed an AI suggestion
 
-**1. How the timing assumptions were presented.** To calculate whether an order is "at risk", Claude chose specific values. These were a 15-minute safety margin, a 2-hour "no progress" alert, and fixed durations for each step. The README presented them as rules, and one line called them my operational decisions. I had no real XYZ timing data, and the brief doesn't provide any. So I decided they had to be documented explicitly as illustrative prototype assumptions, not as Karmic Seed requirements or measured facts. I kept the timing logic itself for the demo, because a prototype needs some rule to show risk. What I changed is how those values are described.
+**1. Timing assumptions.** Claude added a 15-minute safety margin, a 2-hour "no progress" threshold and fixed step durations so the prototype could show which orders are at risk. At first the README just listed these as rules. When a review pass flagged them, I noticed the brief doesn't give any real timing data. So I kept the values for the demo, but had them documented as illustrative prototype assumptions instead of something that looks like a Karmic Seed requirement or a measured fact.
 
-**2. How the AI's role was described.** Claude's first draft of this note said the AI "planned the data model and rules". That overstated its role. The problems to focus on and the scope boundaries came from my brief; Claude proposed the implementation details within them. I had the note rewritten to keep that distinction clear.
+**2. How the AI's role was described.** The first draft of this note said the AI "planned the data model and rules". I changed that because it overstated the AI's role. My instructions defined the problems and the scope, and Claude handled the implementation details.
 
-## Changed during review passes (not disagreements)
+## Review and testing fixes
 
-These came out of review and testing rounds, not from me overruling a specific suggestion:
+Review and testing rounds also led to several fixes. These weren't disagreements, just things that needed correcting:
 
-- **Over-count scans:** these are now blocked at the packing bench instead of being logged as exceptions, since an over-count doesn't mean anything is wrong on the shelf.
-- **"Blocked" next to "On track":** an order could show both. The "On track" tag is now hidden on blocked or held orders.
-- **Dashboard wording:** the priority tile could say all priority orders were "on track" while one still had no label. It now shows how many are at risk or due soon.
-- **Repeated information:** duplicate details on the order page were removed.
+- over-count scans at packing are now blocked instead of logged as exceptions
+- an order can no longer show "Blocked" and "On track" at the same time
+- misleading dashboard wording about priority orders was corrected
+- duplicate order details were removed
+- a filter bug was fixed
+- two layout/button issues were fixed
 
-Testing also caught bugs, which were fixed:
-
-- Two quick filter changes on the Orders page could undo each other.
-- The items table overlapped a button.
-- A button was clipped at laptop width.
+AI helped speed up the implementation and testing, but I reviewed the output and made the final decisions about the scope and the submission.
